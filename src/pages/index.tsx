@@ -29,7 +29,7 @@ const PageContainer = styled.div`
 
 const HeroSection = styled.section`
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   background: ${colors.accent.skylineWhite};
   background-image: 
     linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
@@ -42,6 +42,12 @@ const HeroSection = styled.section`
   text-align: center;
   color: ${colors.primary.deepTechBlack};
   overflow: hidden;
+  padding: 2rem 0;
+
+  @media (max-width: 768px) {
+    min-height: auto;
+    padding: 4rem 0 3rem;
+  }
 
   &::before {
     content: '';
@@ -64,7 +70,11 @@ const HeroContent = styled.div`
   position: relative;
   z-index: 2;
   max-width: 800px;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
+  
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
 `;
 
 const HeroLogo = styled.div`
@@ -136,6 +146,11 @@ const CTAButton = styled.a<{ $primary?: boolean }>`
   text-transform: uppercase;
   font-size: 0.95rem;
   
+  @media (max-width: 768px) {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.85rem;
+  }
+  
   ${props => props.$primary ? `
     background: ${colors.primary.detroitRed};
     color: ${colors.accent.skylineWhite};
@@ -172,6 +187,11 @@ const NextEventBadge = styled.div`
   border: 1px solid rgba(255, 59, 48, 0.2);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
+  
+  @media (max-width: 768px) {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+  }
 `;
 
 const Section = styled.section<{ $background?: string; $dark?: boolean }>`
@@ -182,12 +202,20 @@ const Section = styled.section<{ $background?: string; $dark?: boolean }>`
     colors.accent.skylineWhite
   };
   color: ${props => props.$dark ? colors.accent.skylineWhite : colors.primary.deepTechBlack};
+  
+  @media (max-width: 768px) {
+    padding: 3rem 0;
+  }
 `;
 
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+  
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
 `;
 
 const SectionTitle = styled.h2<{ $dark?: boolean }>`
@@ -198,6 +226,11 @@ const SectionTitle = styled.h2<{ $dark?: boolean }>`
   margin-bottom: 3rem;
   letter-spacing: -0.02em;
   color: ${props => props.$dark ? colors.accent.skylineWhite : colors.primary.deepTechBlack};
+  
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 const SectionSubtitle = styled.p<{ $dark?: boolean }>`
@@ -207,6 +240,11 @@ const SectionSubtitle = styled.p<{ $dark?: boolean }>`
   margin: 0 auto 3rem;
   line-height: 1.6;
   color: ${props => props.$dark ? colors.secondary.lightGray : colors.secondary.steelGray};
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin: 0 auto 2rem;
+  }
 `;
 
 const Grid = styled.div`
@@ -214,6 +252,12 @@ const Grid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-bottom: 3rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 const Card = styled.div<{ $dark?: boolean }>`
@@ -228,6 +272,10 @@ const Card = styled.div<{ $dark?: boolean }>`
     transform: translateY(-5px);
     box-shadow: 0 8px 30px rgba(255, 59, 48, 0.1);
     border-color: rgba(255, 59, 48, 0.3);
+  }
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
   }
 `;
 
@@ -263,6 +311,10 @@ const Footer = styled.footer`
   color: ${colors.accent.skylineWhite};
   padding: 3rem 0 2rem;
   border-top: 1px solid ${colors.secondary.steelGray};
+  
+  @media (max-width: 768px) {
+    padding: 2rem 0 1.5rem;
+  }
 `;
 
 const FooterContent = styled.div`
@@ -270,6 +322,12 @@ const FooterContent = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
   margin-bottom: 2rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: center;
+  }
 `;
 
 const FooterSection = styled.div`
@@ -295,6 +353,11 @@ const FooterSection = styled.div`
 
 const FooterLogo = styled.div`
   margin-bottom: 1rem;
+  
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+  }
   
   img {
     max-width: 120px;
@@ -326,6 +389,11 @@ const EventFormat = styled.div<{ $dark?: boolean }>`
   border-radius: 12px;
   margin-bottom: 3rem;
   border: 1px solid rgba(255, 59, 48, 0.1);
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 const EventList = styled.ul<{ $dark?: boolean }>`
@@ -361,6 +429,10 @@ const TestimonialCard = styled.div<{ $dark?: boolean }>`
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(255, 59, 48, 0.1);
   }
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
 `;
 
 const TestimonialText = styled.p<{ $dark?: boolean }>`
@@ -381,6 +453,13 @@ const StatsContainer = styled.div`
   flex-wrap: wrap;
   gap: 2rem;
   margin: 3rem 0;
+  
+  @media (max-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
 `;
 
 const StatItem = styled.div`
@@ -392,6 +471,10 @@ const StatNumber = styled.div`
   font-size: 3rem;
   font-weight: 800;
   color: ${colors.primary.detroitRed};
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 
 const StatLabel = styled.div<{ $dark?: boolean }>`
@@ -406,6 +489,15 @@ const PartnersGrid = styled.div`
   gap: 2rem;
   align-items: center;
   text-align: center;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const PartnerLogo = styled.div<{ $dark?: boolean }>`

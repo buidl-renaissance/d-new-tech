@@ -1,7 +1,8 @@
 import React, { useEffect, ReactNode, createContext, useContext, useState } from 'react';
 
+// Farcaster SDK context type - using unknown for flexibility since SDK types may vary
 interface FarcasterContextType {
-  context: any;
+  context: unknown;
   isLoading: boolean;
 }
 
@@ -16,7 +17,7 @@ interface FarcasterProviderProps {
 
 // Client-side only component that uses the Farcaster SDK
 const FarcasterSDKWrapper: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [context, setContext] = useState<any>(null);
+  const [context, setContext] = useState<unknown>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
