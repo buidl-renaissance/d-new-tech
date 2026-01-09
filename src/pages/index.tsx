@@ -1208,104 +1208,136 @@ const EventDetail = styled.div`
 // API Events Grid
 const ApiEventsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: 1.5rem;
   margin-bottom: 3rem;
   
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
   }
 `;
 
-const ApiEventCard = styled.div`
+const ApiEventCard = styled.a`
+  display: flex;
+  text-decoration: none;
+  color: ${colors.accent.chrome};
   background: ${colors.dark.graphite};
-  border-radius: 12px;
+  border-radius: 16px;
   border: 1px solid ${colors.dark.steel};
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   
   &:hover {
-    transform: translateY(-8px);
     border-color: ${colors.primary.detroitRed};
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 40px rgba(230, 57, 70, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(230, 57, 70, 0.2);
+    transform: translateY(-4px);
   }
 `;
 
-const ApiEventHeader = styled.div`
-  background: linear-gradient(135deg, ${colors.primary.detroitRed} 0%, ${colors.primary.crimson} 100%);
-  padding: 1.25rem 1.5rem;
+const ApiEventCardContent = styled.div`
   display: flex;
-  justify-content: space-between;
+  width: 100%;
+`;
+
+const ApiEventCalendar = styled.div`
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  min-width: 80px;
+  background: linear-gradient(135deg, ${colors.primary.detroitRed} 0%, ${colors.primary.crimson} 100%);
+  padding: 1.25rem 1rem;
+  
+  @media (max-width: 480px) {
+    min-width: 70px;
+    padding: 1rem 0.75rem;
+  }
 `;
 
-const ApiEventDate = styled.div`
-  text-align: left;
+const ApiEventCalendarHeader = styled.div`
+  text-align: center;
 `;
 
-const ApiEventDay = styled.div`
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.5rem;
-  line-height: 1;
-  color: ${colors.accent.chrome};
-  letter-spacing: 0.02em;
-`;
-
-const ApiEventMonth = styled.div`
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
+const ApiEventMonth = styled.span`
+  font-size: 0.85rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.9);
 `;
 
-const ApiEventTime = styled.div`
-  text-align: right;
+const ApiEventCalendarBody = styled.div`
+  text-align: center;
+`;
+
+const ApiEventDay = styled.span`
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 1;
   color: ${colors.accent.chrome};
   
-  i {
-    margin-right: 0.5rem;
-    opacity: 0.8;
-  }
-  
-  span {
-    font-weight: 600;
-    font-size: 0.95rem;
+  @media (max-width: 480px) {
+    font-size: 2rem;
   }
 `;
 
 const ApiEventBody = styled.div`
-  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  flex: 1;
 `;
 
 const ApiEventTitle = styled.h3`
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.35rem;
   font-weight: 400;
-  color: ${colors.accent.chrome};
-  margin-bottom: 1rem;
-  letter-spacing: 0.02em;
-  line-height: 1.2;
   text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: ${colors.accent.chrome};
+  margin: 0;
+  line-height: 1.2;
+  
+  @media (max-width: 480px) {
+    font-size: 1.2rem;
+  }
+`;
+
+const ApiEventMeta = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+`;
+
+const ApiEventTime = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: ${colors.accent.silver};
+  font-size: 0.9rem;
+  
+  i {
+    color: ${colors.primary.detroitRed};
+    font-size: 0.8rem;
+  }
 `;
 
 const ApiEventVenue = styled.div`
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
+  gap: 0.5rem;
   color: ${colors.accent.silver};
   font-size: 0.9rem;
-  margin-bottom: 1rem;
-  padding: 0.875rem 1rem;
-  background: ${colors.dark.charcoal};
-  border-radius: 8px;
-  border: 1px solid ${colors.dark.steel};
   
   i {
     color: ${colors.primary.detroitRed};
+    font-size: 0.8rem;
     margin-top: 2px;
-    flex-shrink: 0;
   }
 `;
 
@@ -1313,52 +1345,25 @@ const ApiEventVenueDetails = styled.div`
   strong {
     color: ${colors.accent.chrome};
     display: block;
-    margin-bottom: 0.25rem;
-    font-size: 0.95rem;
   }
 `;
 
-const ApiEventGroup = styled.div`
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-  color: ${colors.accent.silver};
-  margin-bottom: 1.25rem;
-  padding: 0.5rem 0.75rem;
-  background: rgba(230, 57, 70, 0.1);
-  border-radius: 6px;
-  border: 1px solid rgba(230, 57, 70, 0.2);
-  
-  i {
-    color: ${colors.primary.detroitRed};
-    font-size: 0.75rem;
-  }
-`;
-
-const ApiEventButton = styled.a`
+const ApiEventButton = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 0.5rem;
-  width: 100%;
-  padding: 1rem 1.5rem;
-  background: transparent;
-  color: ${colors.accent.chrome};
-  border: 2px solid ${colors.dark.steel};
-  border-radius: 8px;
-  text-decoration: none;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+  color: ${colors.primary.detroitRed};
+  font-size: 0.85rem;
+  font-weight: 600;
   
-  &:hover {
-    background: ${colors.primary.detroitRed};
-    border-color: ${colors.primary.detroitRed};
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(230, 57, 70, 0.3);
+  i {
+    font-size: 0.75rem;
+    transition: transform 0.2s ease;
+  }
+  
+  ${ApiEventCard}:hover & i {
+    transform: translateX(3px);
   }
 `;
 
@@ -1372,8 +1377,8 @@ const LoadingSpinner = styled.div`
   
   &::before {
     content: '';
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
     border: 3px solid ${colors.dark.steel};
     border-top-color: ${colors.primary.detroitRed};
     border-radius: 50%;
@@ -2227,41 +2232,44 @@ export default function Home() {
                   {events.map((event) => {
                     const dateInfo = formatEventDate(event.dateTime);
                     return (
-                      <ApiEventCard key={event.eventId}>
-                        <ApiEventHeader>
-                          <ApiEventDate>
-                            <ApiEventDay>{dateInfo.day}</ApiEventDay>
-                            <ApiEventMonth>{dateInfo.month}</ApiEventMonth>
-                          </ApiEventDate>
-                          <ApiEventTime>
-                            <i className="fas fa-clock"></i>
-                            <span>{dateInfo.time}</span>
-                          </ApiEventTime>
-                        </ApiEventHeader>
-                        <ApiEventBody>
-                          <ApiEventGroup>
-                            <i className="fas fa-users"></i>
-                            {event.group?.name || 'DNewTech'}
-                          </ApiEventGroup>
-                          <ApiEventTitle>{event.title}</ApiEventTitle>
-                          {event.venue && (
-                            <ApiEventVenue>
-                              <i className="fas fa-map-marker-alt"></i>
-                              <ApiEventVenueDetails>
-                                <strong>{event.venue.name}</strong>
-                                {event.venue.address}, {event.venue.city}, {event.venue.state}
-                              </ApiEventVenueDetails>
-                            </ApiEventVenue>
-                          )}
-                          <ApiEventButton 
-                            href={event.eventUrl} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                          >
-                            <i className="fas fa-external-link-alt"></i>
-                            View Event Details
-                          </ApiEventButton>
-                        </ApiEventBody>
+                      <ApiEventCard 
+                        key={event.eventId}
+                        href={event.eventUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <ApiEventCardContent>
+                          <ApiEventCalendar>
+                            <ApiEventCalendarHeader>
+                              <ApiEventMonth>{dateInfo.month}</ApiEventMonth>
+                            </ApiEventCalendarHeader>
+                            <ApiEventCalendarBody>
+                              <ApiEventDay>{dateInfo.day}</ApiEventDay>
+                            </ApiEventCalendarBody>
+                          </ApiEventCalendar>
+                          <ApiEventBody>
+                            <ApiEventTitle>{event.title}</ApiEventTitle>
+                            <ApiEventMeta>
+                              <ApiEventTime>
+                                <i className="fas fa-clock"></i>
+                                {dateInfo.weekday} • {dateInfo.time}
+                              </ApiEventTime>
+                            </ApiEventMeta>
+                            {event.venue && (
+                              <ApiEventVenue>
+                                <i className="fas fa-map-marker-alt"></i>
+                                <ApiEventVenueDetails>
+                                  <strong>{event.venue.name}</strong>
+                                  {event.venue.address && `${event.venue.address}, ${event.venue.city}, ${event.venue.state}`}
+                                </ApiEventVenueDetails>
+                              </ApiEventVenue>
+                            )}
+                            <ApiEventButton>
+                              View Event Details
+                              <i className="fas fa-arrow-right"></i>
+                            </ApiEventButton>
+                          </ApiEventBody>
+                        </ApiEventCardContent>
                       </ApiEventCard>
                     );
                   })}
