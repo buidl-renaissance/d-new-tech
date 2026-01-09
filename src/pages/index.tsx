@@ -93,24 +93,6 @@ const fadeIn = keyframes`
   }
 `;
 
-const pulseGlow = keyframes`
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(230, 57, 70, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(230, 57, 70, 0.6);
-  }
-`;
-
-const shimmer = keyframes`
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-`;
-
 // Styled Components
 const PageContainer = styled.div`
   min-height: 100vh;
@@ -519,36 +501,6 @@ const NextEventVenueSmall = styled.span`
   }
 `;
 
-const NextEventDivider = styled.span`
-  width: 1px;
-  height: 32px;
-  background: ${colors.dark.steel};
-  flex-shrink: 0;
-  
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
-const NextEventVenue = styled.span`
-  font-size: 0.8rem;
-  color: ${colors.accent.silver};
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  white-space: nowrap;
-  
-  i {
-    color: ${colors.primary.detroitRed};
-    font-size: 0.65rem;
-  }
-  
-  @media (max-width: 768px) {
-    font-size: 0.7rem;
-    display: none;
-  }
-`;
-
 const NextEventRsvpButton = styled.button`
   background: ${colors.primary.detroitRed};
   color: white;
@@ -578,19 +530,6 @@ const NextEventRsvpButton = styled.button`
   @media (max-width: 768px) {
     padding: 0.35rem 0.7rem;
     font-size: 0.7rem;
-  }
-`;
-
-const NextEventLoading = styled.div`
-  padding: 0.5rem 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  
-  i {
-    color: ${colors.primary.detroitRed};
-    animation: ${pulseGlow} 1.5s ease-in-out infinite;
   }
 `;
 
@@ -1120,88 +1059,6 @@ const SubmitButton = styled.button`
   
   @media (max-width: 500px) {
     padding: 1rem;
-  }
-`;
-
-const SocialLinks = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin: 2.5rem 0;
-`;
-
-const SocialLink = styled.a`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  background: ${colors.dark.graphite};
-  color: ${colors.accent.silver};
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid ${colors.dark.steel};
-  font-size: 1.2rem;
-  
-  &:hover {
-    background: ${colors.primary.detroitRed};
-    color: ${colors.accent.chrome};
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 10px 25px rgba(230, 57, 70, 0.4);
-    border-color: ${colors.primary.detroitRed};
-  }
-`;
-
-const EventCard = styled(Card)`
-  max-width: 650px;
-  margin: 0 auto 3rem;
-  text-align: center;
-  padding: 3rem;
-  border-color: ${colors.primary.detroitRed};
-  background: linear-gradient(135deg, ${colors.dark.graphite} 0%, rgba(230, 57, 70, 0.05) 100%);
-  
-  &::before {
-    display: none;
-  }
-  
-  @media (max-width: 768px) {
-    padding: 2rem 1.5rem;
-  }
-`;
-
-const EventDetails = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin: 1.5rem 0 2rem;
-  
-  @media (max-width: 600px) {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-`;
-
-const EventDetail = styled.div`
-  i {
-    color: ${colors.primary.detroitRed};
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-    display: block;
-  }
-  
-  strong {
-    display: block;
-    color: ${colors.accent.chrome};
-    margin-bottom: 0.25rem;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-  }
-  
-  span {
-    color: ${colors.accent.silver};
-    font-size: 0.95rem;
   }
 `;
 

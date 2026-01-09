@@ -127,9 +127,9 @@ export default async function handler(
         createdAt: new Date(),
         user: {
           id: user.id,
-          username: user.username,
-          displayName: user.displayName,
-          pfpUrl: user.pfpUrl,
+          username: user.username ?? null,
+          displayName: user.displayName ?? null,
+          pfpUrl: user.pfpUrl ?? null,
         },
       };
 
