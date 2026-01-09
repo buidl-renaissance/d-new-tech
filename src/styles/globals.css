@@ -29,11 +29,11 @@ body {
 }
 
 /* Mobile webview header compensation - Farcaster mini-app header is ~56px */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   body {
     padding-top: 56px;
   }
-}
+} */
 
 * {
   box-sizing: border-box;
