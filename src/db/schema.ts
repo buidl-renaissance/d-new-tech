@@ -21,3 +21,18 @@ export const farcasterAccounts = sqliteTable('farcaster_accounts', {
   createdAt: integer('createdAt', { mode: 'timestamp' }).default(sql`(strftime('%s', 'now'))`).notNull(),
   updatedAt: integer('updatedAt', { mode: 'timestamp' }).default(sql`(strftime('%s', 'now'))`).notNull(),
 });
+
+// Members table - users who have registered as community members
+export const members = sqliteTable('members', {
+  id: text('id').primaryKey(),
+  userId: text('userId').notNull().unique(),
+  createdAt: integer('createdAt', { mode: 'timestamp' }).default(sql`(strftime('%s', 'now'))`).notNull(),
+});
+
+// Messages table - community chat messages
+export const messages = sqliteTable('messages', {
+  id: text('id').primaryKey(),
+  userId: text('userId').notNull(),
+  content: text('content').notNull(),
+  createdAt: integer('createdAt', { mode: 'timestamp' }).default(sql`(strftime('%s', 'now'))`).notNull(),
+});
